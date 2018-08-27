@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
-import {Row, Col} from 'antd';
-
-import UserDropDown from "./UserDropDown";
+import Header from './Header/index';
+import Footer from './Footer/index'
 
 const { SubMenu } = Menu;
-const {Header, Content, Footer, Sider} = Layout;
+const {Content, Sider} = Layout;
 
 
 class PracticeDaily extends Component {
@@ -25,19 +24,7 @@ class PracticeDaily extends Component {
     render() {
         return (
             <Layout style={{height: '100vh'}}>
-                <Header className="header">
-                    <Row>
-                        <Col span={8}>
-                            <div className="logo"/>
-                        </Col>
-                        <Col span={2} offset={10}>
-                            <UserDropDown/>
-                        </Col>
-                        <Col span={2}>
-                            <Icon type="bell" style={{color: 'white', fontSize: 20, paddingLeft: '10px'}}/>
-                        </Col>
-                    </Row>
-                </Header>
+                <Header />
                 <Content style={{padding: '0 50px', display: 'flex', flexDirection: 'column'}}>
                     <Breadcrumb style={{margin: '16px 0'}}>
                         <Breadcrumb.Item>思沃学院</Breadcrumb.Item>
@@ -69,9 +56,7 @@ class PracticeDaily extends Component {
                         </Content>
                     </Layout>
                 </Content>
-                <Footer style={{textAlign: 'center'}}>
-                    Ant Design ©2018 Created by Ant UED
-                </Footer>
+               <Footer />
             </Layout>
         )
     }
