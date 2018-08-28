@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
-import Header from './Header/index';
-import Footer from './Footer/index'
+import DailyHeader from './DailyHeader';
+import DailyFooter from './DailyFooter'
+import MyDaily from "./MyDaily";
 
-const { SubMenu } = Menu;
+const {SubMenu} = Menu;
 const {Content, Sider} = Layout;
 
 
@@ -24,8 +25,8 @@ class PracticeDaily extends Component {
     render() {
         return (
             <Layout style={{height: '100vh'}}>
-                <Header />
-                <Content style={{padding: '0 50px', display: 'flex', flexDirection: 'column'}}>
+                <DailyHeader/>
+                <Content style={{padding: '0 50px', display: 'flex', flexDirection: 'column', flexGrow: 0}}>
                     <Breadcrumb style={{margin: '16px 0'}}>
                         <Breadcrumb.Item>思沃学院</Breadcrumb.Item>
                         <Breadcrumb.Item>成长日志</Breadcrumb.Item>
@@ -52,11 +53,11 @@ class PracticeDaily extends Component {
                             </Menu>
                         </Sider>
                         <Content style={{padding: '0 24px'}}>
-                            Content
+                            <MyDaily/>
                         </Content>
                     </Layout>
                 </Content>
-               <Footer />
+                <DailyFooter/>
             </Layout>
         )
     }

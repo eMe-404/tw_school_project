@@ -5,10 +5,21 @@
 }
 
 .logo {
-    background-image: url("media/logo-white.763050c9.png");
-    background-size: 100% 100%;
-    width: 120px;
-    height: 31px;
-    margin: 16px 28px 16px 0;
-    float: left;
+    height: 60px;
+}
+
+.App-header {
+    background: #595959;
+    padding: 24px 48px 14px;
+    color: #fff;
+    height: auto;
+    line-height: 36px;
+}
+
+.Margin-top-2 {
+    margin-top: 20px;
+}
+
+.button-note {
+    margin: 0 16px
 }
