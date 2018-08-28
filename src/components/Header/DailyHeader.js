@@ -1,10 +1,10 @@
 import React from "react";
-import {Row, Col, Icon} from "antd";
-import {Layout} from "antd";
+import { Row, Col, Icon } from "antd";
+import { Layout } from "antd";
 import UserDropDown from "./UserDropDown";
-import logo from "../media/logo-white.763050c9.png"
+import logo from "./images/logo-white.763050c9.png"
 
-const {Header} = Layout;
+const { Header } = Layout;
 
 const DailyHeader = () => {
     return (
@@ -19,10 +19,10 @@ const DailyHeader = () => {
                 <Col span={2} offset={12}>
                     <UserDropDown/>
                 </Col>
-                <Col span={1} style={{marginLeft: 5, textAlign: "right"}}>
+                <Col span={1} style={{ marginLeft: 5, textAlign: "right" }}>
                     <Icon
                         type="bell"
-                        style={{color: "white", fontSize: 20, paddingLeft: 10, marginTop: 26}}
+                        style={{ color: "white", fontSize: 20, paddingLeft: 10, marginTop: 26 }}
                     />
                 </Col>
             </Row>
