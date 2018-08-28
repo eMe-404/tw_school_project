@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Layout } from 'antd';
-import DailyHeader from './Header/DailyHeader';
+import React from 'react'
+import { Layout } from 'antd'
+import DailyHeader from './Header/DailyHeader'
 import DailyFooter from './Footer/DailyFooter'
-import DailyContent from './Content/DailyContent';
+import DailyContent from './Content/DailyContent'
 
 const PracticeDaily = () => {
     return (
@@ -12,6 +12,6 @@ const PracticeDaily = () => {
             <DailyFooter/>
         </Layout>
     )
-};
+}
 
-export default PracticeDaily;
+export default PracticeDaily

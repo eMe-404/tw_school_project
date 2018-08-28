@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Layout } from 'antd';
+import React from 'react'
+import { Layout } from 'antd'
 
-const { Footer } = Layout;
+const { Footer } = Layout
 
 const DailyFooter = () => {
     return (
-        <Footer style={{ textAlign: "center" }}>
+        <Footer style={{ textAlign: 'center' }}>
             Ant Design ©2018 Created by Ant UED
         </Footer>
-    );
-};
+    )
+}
 
-export default DailyFooter;
+export default DailyFooter

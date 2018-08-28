@@ -1,7 +1,7 @@
-import React from "react";
-import { Layout } from "antd";
-import DailySider from "./DailySider";
-import DailyLog from "./DailyLog";
+import React from 'react'
+import { Layout } from 'antd'
+import DailySider from './DailySider'
+import DailyLog from './DailyLog'
 
 const DailyDetails = ({ handleSideMenuClick }) => {
     return (
@@ -10,6 +10,6 @@ const DailyDetails = ({ handleSideMenuClick }) => {
             <DailyLog/>
         </Layout>
     )
-};
+}
 
-export default DailyDetails;
+export default DailyDetails

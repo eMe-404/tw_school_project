@@ -1,7 +1,7 @@
-import React from "react";
-import { Icon, Menu, Layout } from "antd";
+import React from 'react'
+import { Icon, Menu, Layout } from 'antd'
 
-const { Sider } = Layout;
+const { Sider } = Layout
 
 const DailySider = ({ handleSideMenuClick }) => {
     return (
@@ -25,6 +25,6 @@ const DailySider = ({ handleSideMenuClick }) => {
             </Menu>
         </Sider>
     )
-};
+}
 
-export default DailySider;
+export default DailySider

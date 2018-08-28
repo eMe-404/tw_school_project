@@ -1,5 +1,5 @@
-import React from "react";
-import { Breadcrumb } from "antd";
+import React from 'react'
+import { Breadcrumb } from 'antd'
 
 const DailyBreadcrumb = ({ selectedSideMenuName }) => {
     return (
@@ -9,5 +9,5 @@ const DailyBreadcrumb = ({ selectedSideMenuName }) => {
             <Breadcrumb.Item>{selectedSideMenuName}</Breadcrumb.Item>
         </Breadcrumb>
     )
-};
-export default DailyBreadcrumb;
+}
+export default DailyBreadcrumb

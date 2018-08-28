@@ -1,67 +1,84 @@
-import React, { Component } from "react";
-import { Form, DatePicker, Input, Button } from "antd";
+import React, { Component } from 'react'
+import { Form, DatePicker, Input, Button } from 'antd'
+import moment from 'moment'
 
-const FormItem = Form.Item;
-const TextArea = Input.TextArea;
+const FormItem = Form.Item
+const TextArea = Input.TextArea
 
 class DailyForm extends Component {
-    constructor(props) {
-        super(props);
-
+    constructor (props) {
+        super(props)
+        this.state = {
+            date: moment(),
+            textArea: '## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n'
+        }
     }
 
-    render() {
+    handleTextAreaChange (event) {
+        this.setState({
+            textArea: event.target.value
+        })
+    }
 
-        const { getFieldDecorator } = this.props.form;
+    handleDatePickerChange (date) {
+        this.setState({
+            date: date
+        })
+    }
+
+    render () {
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
-                sm: { span: 8 },
+                sm: { span: 8 }
             },
             wrapperCol: {
                 xs: { span: 24 },
-                sm: { span: 16 },
-            },
-        };
-        const config = {
-            rules: [{ type: 'object', required: true, message: 'Please select time!' }],
-        };
-        const textAreaTemplate = `## 我做了什么
-## 学了什么
-## 有什么印象深刻的收获`;
+                sm: { span: 16 }
+            }
+        }
+
+        const dateFormat = 'YYYY/MM/DD'
+        const handleSubmit = this.props.handleSubmit
         return (
-            <Form onSubmit={this.props.handleSubmit}>
+            <Form onSubmit={(e) => handleSubmit(e, this.state.textArea, this.state.date)}>
                 <FormItem
                     {...formItemLayout}
                     label="日期"
                 >
-                    {getFieldDecorator('date-picker', config)(
-                        <DatePicker/>
-                    )}
+                    <DatePicker
+                        value={this.state.date} format={dateFormat}
+                        onChange={(date) => this.handleDatePickerChange(date)}
+                    />
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
                     label="总结的内容"
                 >
-                    <TextArea style={{ height: 100 }}>{textAreaTemplate}</TextArea>
+                    <TextArea
+                        style={{ height: 100 }}
+                        value={this.state.textArea}
+                        onChange={(e) => this.handleTextAreaChange(e)}
+                    />
                 </FormItem>
                 <FormItem
-                    style={{ display: "flex", justifyContent: "flex-end" }}
+                    style={{ display: 'flex', justifyContent: 'flex-end' }}
                 >
-                    <Button type="primary"
-                            className="button-note"
-                            ghost
-                            size="small"
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        className="button-note"
+                        ghost
+                        size="small"
                     >提交</Button>
-                    <Button className="button-note"
-                            size="small"
+                    <Button
+                        className="button-note"
+                        size="small"
                     >取消</Button>
                 </FormItem>
             </Form>
         )
     }
-
 }
 
-DailyForm = Form.create({})(DailyForm);
-export default DailyForm;
+export default DailyForm

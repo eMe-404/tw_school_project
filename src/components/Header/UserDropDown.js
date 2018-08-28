@@ -1,5 +1,5 @@
-import React from "react";
-import { Menu, Dropdown, Button, Icon, message } from 'antd';
+import React from 'react'
+import { Menu, Dropdown, Button, Icon, message } from 'antd'
 
 const UserDropDown = () => {
     const menu = (
@@ -7,11 +7,10 @@ const UserDropDown = () => {
             <Menu.Item key="1"><Icon type="user"/>个人中心</Menu.Item>
             <Menu.Item key="2"><Icon type="close"/>退出</Menu.Item>
         </Menu>
-    );
+    )
 
-    function handleMenuClick(e) {
-        message.info('Click on menu item.');
-        console.log('click', e);
+    function handleMenuClick (e) {
+        message.info('Click on menu item.')
     }
 
     return (
@@ -23,6 +22,6 @@ const UserDropDown = () => {
             </Dropdown>
         </div>
     )
-};
+}
 
-export default UserDropDown;
+export default UserDropDown
