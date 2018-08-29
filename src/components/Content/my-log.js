@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
 import MyLogCreate from './my-log-create'
 import MyLogDisplay from './my-log-display'
+import { connect } from 'react-redux'
 
 class MyLog extends Component {
     constructor (props) {
         super(props)
-        this.state = {
-            logInfo: []
-        }
     }
 
     handleSubmit = (e, content, date) => {
         e.preventDefault()
-        const logInfo = this.state.logInfo
-
-        logInfo.push({ date, content })
-        this.setState({
-            logInfo: logInfo
-        })
+        this.props.addLog({ date, content })
 
     }
 
-
     render () {
+        const {logs} = this.props
         return (
             <div>
                 <MyLogCreate handleSubmit={this.handleSubmit}/>
-                {this.state.logInfo.map((display, index) =>
+                {logs.map((display, index) =>
                     <MyLogDisplay
                         logDate={display.date}
                         displayContent={display.content}
@@ -36,4 +29,18 @@ class MyLog extends Component {
     }
 }
 
-export default MyLog
+const mapStateToProps = (state) => ({
+    logs: state.logs
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    addLog: (logInfo) => {
+        dispatch({
+            type: 'ADD_LOG',
+            data: logInfo
+        })
+    }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyLog)
