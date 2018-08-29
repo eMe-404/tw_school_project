@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, DatePicker, Input, Button } from 'antd'
+import { Button, DatePicker, Form, Input } from 'antd'
 import moment from 'moment'
 
 const FormItem = Form.Item
@@ -10,7 +10,7 @@ class DailyForm extends Component {
         super(props)
         this.state = {
             date: moment(),
-            textArea: '## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n'
+            textArea: '## 我做了什\n## 学了什么\n## 有什么印象深刻的收获'
         }
     }
 

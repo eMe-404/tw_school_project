@@ -1,5 +1,7 @@
 import React from 'react'
-import { Icon, Menu, Layout } from 'antd'
+import { Icon, Layout, Menu } from 'antd'
+import { Link } from 'react-router-dom'
+
 
 const { Sider } = Layout
 
@@ -15,10 +17,12 @@ const DailySider = ({ handleSideMenuClick }) => {
                     handleSideMenuClick(event)
                 }}
             >
-                <Menu.Item key='我的日志'>我的日志
+                <Menu.Item key='我的日志'>
+                    <Link to='/practise-diaries'>我的日志</Link>
                     <Icon type="edit" style={{ marginLeft: 6 }}/>
                 </Menu.Item>
-                <Menu.Item key='优秀日志'>优秀日志
+                <Menu.Item key='优秀日志'>
+                    <Link to='/excellent-diaries'>优秀日志</Link>
                     <Icon type="star-o" style={{ marginLeft: 6 }}/>
                 </Menu.Item>
 

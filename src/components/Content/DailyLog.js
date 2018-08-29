@@ -10,18 +10,17 @@ class DailyLog extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            date: '',
-            summariseContent: []
+            logInfo: []
         }
     }
 
-    handleSubmit = (e, textArea, date) => {
+    handleSubmit = (e, content, date) => {
         e.preventDefault()
-        const newSummariseContent = this.state.summariseContent
-        newSummariseContent.push(textArea)
+        const logInfo = this.state.logInfo
+
+        logInfo.push({ date, content })
         this.setState({
-            date: date.format('YYYY-MM-DD'),
-            summariseContent: newSummariseContent
+            logInfo: logInfo
         })
 
     }
@@ -31,10 +30,10 @@ class DailyLog extends Component {
         return (
             <Content style={{ padding: '0 24px' }}>
                 <NewLog handleSubmit={this.handleSubmit}/>
-                {this.state.summariseContent.map((value, index) =>
+                {this.state.logInfo.map((display, index) =>
                     <DisplayLog
-                        logDate={this.state.date}
-                        displayContent={value}
+                        logDate={display.date}
+                        displayContent={display.content}
                         key={index}/>)}
             </Content>
         )

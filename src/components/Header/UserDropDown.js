@@ -9,7 +9,7 @@ const UserDropDown = () => {
         </Menu>
     )
 
-    function handleMenuClick (e) {
+    function handleMenuClick () {
         message.info('Click on menu item.')
     }
 
