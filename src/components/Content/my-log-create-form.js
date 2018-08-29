@@ -5,7 +5,7 @@ import moment from 'moment'
 const FormItem = Form.Item
 const TextArea = Input.TextArea
 
-class DailyForm extends Component {
+class MyLogCreateForm extends Component {
     constructor (props) {
         super(props)
         this.state = {
@@ -81,4 +81,4 @@ class DailyForm extends Component {
     }
 }
 
-export default DailyForm
+export default MyLogCreateForm

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'antd'
 
-const DisplayLog = ({ logDate, displayContent }) => {
+const MyLogDisplay = ({ logDate, displayContent }) => {
     const content = linesToParagraphs(displayContent)
 
     function linesToParagraphs (...nodes) {
@@ -23,4 +23,4 @@ const DisplayLog = ({ logDate, displayContent }) => {
     )
 }
 
-export default DisplayLog
+export default MyLogDisplay

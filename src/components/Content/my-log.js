@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import { Layout } from 'antd'
-import NewLog from './NewLog'
-import DisplayLog from './DisplayLog'
+import MyLogCreate from './my-log-create'
+import MyLogDisplay from './my-log-display'
 
-const { Content } = Layout
-
-
-class DailyLog extends Component {
+class MyLog extends Component {
     constructor (props) {
         super(props)
         this.state = {
@@ -28,16 +24,16 @@ class DailyLog extends Component {
 
     render () {
         return (
-            <Content style={{ padding: '0 24px' }}>
-                <NewLog handleSubmit={this.handleSubmit}/>
+            <div>
+                <MyLogCreate handleSubmit={this.handleSubmit}/>
                 {this.state.logInfo.map((display, index) =>
-                    <DisplayLog
+                    <MyLogDisplay
                         logDate={display.date}
                         displayContent={display.content}
                         key={index}/>)}
-            </Content>
+            </div>
         )
     }
 }
 
-export default DailyLog
+export default MyLog

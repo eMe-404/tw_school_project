@@ -2,7 +2,7 @@ import React from 'react'
 
 const ExcellentLog = () => {
     return (
-        <p>Hello</p>
+        <div>Hello</div>
     )
 }
 
