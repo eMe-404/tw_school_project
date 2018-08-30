@@ -11,7 +11,8 @@
     "react-scripts": "1.1.5",
     "redux": "latest",
     "react-redux": "latest",
-    "redux-thunk": "latest"
+    "redux-thunk": "latest",
+    "react-markdown": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
