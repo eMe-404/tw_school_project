@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button, Card, Icon, message, Popconfirm } from 'antd'
 import ReactMarkdown from 'react-markdown'
 import MyLogCreateForm from './my-log-create-form'
-import { connect } from 'react-redux'
 
 
 class MyLogDisplay extends Component {
@@ -36,10 +35,8 @@ class MyLogDisplay extends Component {
         })
     }
 
-    handleSubmit = (e, content, date, logId) => {
-        e.preventDefault()
-
-        this.props.updateLog({ content, date, logId })
+    handleUpdateSubmit = (e, content, date, logId) => {
+        this.props.handleUpdate(e, content, date, logId)
         this.setState({
             displayCardHidden: false
         })
@@ -97,7 +94,7 @@ class MyLogDisplay extends Component {
                         date={date}
                         logId={logId}
                         handleUpdateCancel={this.handleUpdateCancel}
-                        handleSubmit={this.handleSubmit}
+                        handleSubmit={this.handleUpdateSubmit}
 
                     />
                 </Card>
@@ -106,17 +103,4 @@ class MyLogDisplay extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    displayCardHidden: state.displayCardHidden
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    updateLog: (logInfo) => {
-        dispatch({
-            type: 'UPDATE_LOG',
-            data: logInfo
-        })
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyLogDisplay)
+export default MyLogDisplay

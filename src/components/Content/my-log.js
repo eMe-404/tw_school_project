@@ -5,26 +5,33 @@ import { connect } from 'react-redux'
 
 class MyLog extends Component {
 
-    handleSubmit = (e, content, date) => {
+    handleCreate = (e, content, date) => {
         e.preventDefault()
         this.props.addLog({ date, content })
     }
+
+    handleUpdate = (e, content, date, logId) => {
+        e.preventDefault()
+        this.props.updateLog({ content, date, logId })
+    }
+
 
     handleDelete = (logId) => {
         this.props.deleteLog(logId)
     }
 
-    render() {
+    render () {
         const { logs } = this.props
         return (
             <div>
-                <MyLogCreate handleSubmit={this.handleSubmit} />
+                <MyLogCreate handleCreateSubmit={this.handleCreate}/>
                 {logs.map((log, index) =>
                     <MyLogDisplay
                         {...log}
                         logId={index}
+                        handleUpdate={this.handleUpdate}
                         handleDelete={this.handleDelete}
-                        key={index} />)}
+                        key={index}/>)}
             </div>
         )
     }
@@ -45,6 +52,12 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch({
             type: 'DELETE_LOG',
             data: logId
+        })
+    },
+    updateLog: (logInfo) => {
+        dispatch({
+            type: 'UPDATE_LOG',
+            data: logInfo
         })
     }
 })
