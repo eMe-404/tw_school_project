@@ -41,7 +41,12 @@ class MyDiary extends Component {
                     date={dataSource.date}
                 />
                 {myDiaryList}
-                <Pagination showSizeChanger defaultCurrent={1} total={1}/>
+                <Pagination
+                    showSizeChanger
+                    defaultCurrent={1}
+                    total={1}
+                    style={{ margin: 10 }}
+                />
             </div>
         )
     }
