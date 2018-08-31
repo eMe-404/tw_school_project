@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ExcellentLog = () => {
+const ExcellentDiary = () => {
     return (
         <div>Hello</div>
     )
 }
 
-export default ExcellentLog
+export default ExcellentDiary

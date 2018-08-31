@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import logs from './logs'
+import diaries from './diaries'
 
 export default combineReducers({
-    logs
+    diaries
 })

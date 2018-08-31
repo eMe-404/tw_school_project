@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Button, Card, Icon, message, Popconfirm } from 'antd'
 import ReactMarkdown from 'react-markdown'
-import MyLogCreateForm from './my-log-create-form'
+import MyDiaryCreateCardForm from './my-diary-create-card-form'
 
 
-class MyLogDisplay extends Component {
+class MyDiaryListItem extends Component {
 
     constructor (props) {
         super(props)
         this.state = {
-            displayCardHidden: false
+            isEditing: false
         }
     }
 
@@ -25,29 +25,29 @@ class MyLogDisplay extends Component {
 
     handleUpdate = () => {
         this.setState({
-            displayCardHidden: true
+            isEditing: true
         })
     }
 
     handleUpdateCancel = () => {
         this.setState({
-            displayCardHidden: false
+            isEditing: false
         })
     }
 
-    handleUpdateSubmit = (e, content, date, logId) => {
-        this.props.handleUpdate(e, content, date, logId)
+    handleUpdateSubmit = (e, text, date, logId) => {
+        this.props.handleUpdate(e, text, date, logId)
         this.setState({
-            displayCardHidden: false
+            isEditing: false
         })
     }
 
     render () {
-        const { date, content, logId } = this.props
+        const { date, text, logId } = this.props
         return (
             <div>
                 <Card
-                    className={this.state.displayCardHidden && 'hide'}
+                    className={this.state.isEditing && 'hide'}
                     title={date.format('YYYY-MM-DD') + '的日志'}
                     extra={
                         <Popconfirm
@@ -61,7 +61,7 @@ class MyLogDisplay extends Component {
                     }
                     style={{ width: '100%' }}
                 >
-                    <ReactMarkdown source={content} className='mark-down-wrap'/>
+                    <ReactMarkdown source={text} className='mark-down-wrap'/>
 
                     <div style={{ float: 'right' }}>
                         <Button
@@ -86,11 +86,11 @@ class MyLogDisplay extends Component {
                 <Card
                     title="修改成长日志"
                     style={{ width: '100%' }}
-                    className={!this.state.displayCardHidden && 'hide'}
+                    className={!this.state.isEditing && 'hide'}
                 >
-                    <MyLogCreateForm
-                        createLog={false}
-                        content={content}
+                    <MyDiaryCreateCardForm
+                        isCreate={false}
+                        text={text}
                         date={date}
                         logId={logId}
                         handleUpdateCancel={this.handleUpdateCancel}
@@ -103,4 +103,4 @@ class MyLogDisplay extends Component {
     }
 }
 
-export default MyLogDisplay
+export default MyDiaryListItem

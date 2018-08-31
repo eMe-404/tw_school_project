@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import urlMapToName from './url-map-name'
 
 
-const DailySider = withRouter(({ location }) => {
+const PageSider = withRouter(({ location }) => {
 
     const url = location.pathname
 
@@ -28,4 +28,4 @@ const DailySider = withRouter(({ location }) => {
     )
 })
 
-export default DailySider
+export default PageSider

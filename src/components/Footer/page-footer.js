@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DailyFooter = () => {
+const PageFooter = () => {
     return (
         <div>
             ThoughtWorks School ©2018
@@ -8,4 +8,4 @@ const DailyFooter = () => {
     )
 }
 
-export default DailyFooter
+export default PageFooter

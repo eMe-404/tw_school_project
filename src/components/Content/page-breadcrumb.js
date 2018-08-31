@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import urlMapToName from './url-map-name'
 
 
-const DailyBreadcrumb = withRouter(({ location }) => {
+const PageBreadcrumb = withRouter(({ location }) => {
     const selectedBreadcrumbName = urlMapToName[location.pathname]
     return (
         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -14,4 +14,4 @@ const DailyBreadcrumb = withRouter(({ location }) => {
         </Breadcrumb>
     )
 })
-export default DailyBreadcrumb
+export default PageBreadcrumb

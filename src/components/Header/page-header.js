@@ -3,7 +3,7 @@ import { Col, Icon, Row } from 'antd'
 import UserDropDown from './user-drop-down'
 import logo from './images/logo-white.763050c9.png'
 
-const DailyHeader = () => {
+const PageHeader = () => {
     return (
         <Row>
             <Col span={6}>
@@ -26,4 +26,4 @@ const DailyHeader = () => {
     )
 }
 
-export default DailyHeader
+export default PageHeader

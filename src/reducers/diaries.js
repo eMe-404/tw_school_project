@@ -1,7 +1,7 @@
 /* eslint-disable indent,no-case-declarations,no-redeclare */
 const initState = []
 
-const logs = (state, action) => {
+const diaries = (state , action) => {
     if (!state) {
         state = initState
     }
@@ -19,11 +19,11 @@ const logs = (state, action) => {
     if (action.type === 'UPDATE_LOG') {
         const newState = [...state]
         newState[action.data.logId].date = action.data.date
-        newState[action.data.logId].content = action.data.content
+        newState[action.data.logId].text = action.data.text
         return newState
     }
     return state
 
 }
 
-export default logs
+export default diaries

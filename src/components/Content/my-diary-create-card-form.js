@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
 import { Button, DatePicker, Form, Input } from 'antd'
-import moment from 'moment'
 
 const FormItem = Form.Item
 const TextArea = Input.TextArea
-const template = '## 我做了什\n## 学了什么\n## 有什么印象深刻的收获'
 
-class MyLogCreateForm extends Component {
+class MyDiaryCreateCardForm extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            date: this.props.createLog ? moment() : this.props.date,
-            textArea: this.props.createLog ? template : this.props.content
+            date: this.props.date,
+            text: this.props.text
         }
     }
 
     handleTextAreaChange (event) {
         this.setState({
-            textArea: event.target.value
+            text: event.target.value
         })
     }
 
@@ -25,6 +23,15 @@ class MyLogCreateForm extends Component {
         this.setState({
             date: date
         })
+    }
+
+    handleUpdateCancel () {
+        this.setState({
+            date: this.props.date,
+            text: this.props.text
+        })
+
+        this.props.handleUpdateCancel()
     }
 
     render () {
@@ -43,9 +50,9 @@ class MyLogCreateForm extends Component {
         const handleSubmit = this.props.handleSubmit
         return (
             <Form onSubmit={
-                this.props.createLog ?
-                    (e) => handleSubmit(e, this.state.textArea, this.state.date) :
-                    (e) => handleSubmit(e, this.state.textArea, this.state.date, this.props.logId)
+                this.props.isCreate ?
+                    (e) => handleSubmit(e, this.state.text, this.state.date) :
+                    (e) => handleSubmit(e, this.state.text, this.state.date, this.props.logId)
             }>
                 <FormItem
                     {...formItemLayout}
@@ -62,7 +69,7 @@ class MyLogCreateForm extends Component {
                 >
                     <TextArea
                         style={{ height: 100 }}
-                        value={this.state.textArea}
+                        value={this.state.text}
                         onChange={(e) => this.handleTextAreaChange(e)}
                     />
                 </FormItem>
@@ -80,7 +87,7 @@ class MyLogCreateForm extends Component {
                         className="button-note"
                         size="small"
                         htmlType="button"
-                        onClick={this.props.handleUpdateCancel}
+                        onClick={() => this.handleUpdateCancel()}
                     >取消
                     </Button>
                 </FormItem>
@@ -89,4 +96,4 @@ class MyLogCreateForm extends Component {
     }
 }
 
-export default MyLogCreateForm
+export default MyDiaryCreateCardForm
