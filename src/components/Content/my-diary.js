@@ -44,7 +44,7 @@ class MyDiary extends Component {
                 <Pagination
                     showSizeChanger
                     defaultCurrent={1}
-                    total={1}
+                    total={myDiaryList.length}
                     style={{ margin: 10 }}
                 />
             </div>
