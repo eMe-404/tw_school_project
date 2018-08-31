@@ -3,6 +3,7 @@ import MyDiaryCreateCard from './my-diary-create-card'
 import MyDiaryListItem from './my-diary-list-item'
 import { connect } from 'react-redux'
 import dataSource from './data-source'
+import { Pagination } from 'antd'
 
 
 class MyDiary extends Component {
@@ -40,6 +41,7 @@ class MyDiary extends Component {
                     date={dataSource.date}
                 />
                 {myDiaryList}
+                <Pagination showSizeChanger defaultCurrent={1} total={1}/>
             </div>
         )
     }
