@@ -3,26 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.5.3",
     "antd": "^3.8.3",
+    "jest-cli": "^23.5.0",
     "moment": "^2.22.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-markdown": "latest",
+    "react-redux": "latest",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "latest",
-    "react-redux": "latest",
-    "redux-thunk": "latest",
-    "react-markdown": "latest"
+    "redux-thunk": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "react-scripts test --coverage",
+    "sonarqube": "sonar-scanner"
   },
   "devDependencies": {
     "eslint": "^5.4.0",
     "eslint-plugin-react": "^7.11.1",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "sonarqube-scanner": "^2.1.1"
   }
 }
