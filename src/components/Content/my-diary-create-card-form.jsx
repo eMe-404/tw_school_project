@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, DatePicker, Form, Input } from 'antd'
+import moment from 'moment'
 
 const FormItem = Form.Item
 const TextArea = Input.TextArea
@@ -59,7 +60,7 @@ class MyDiaryCreateCardForm extends Component {
                     label="日期"
                 >
                     <DatePicker
-                        value={this.state.date} format={dateFormat}
+                        value={moment(this.state.date)} format={dateFormat}
                         onChange={(date) => this.handleDatePickerChange(date)}
                     />
                 </FormItem>

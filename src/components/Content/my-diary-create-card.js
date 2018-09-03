@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Card } from 'antd'
 import MyDiaryCreateCardForm from './my-diary-create-card-form'
@@ -14,7 +15,7 @@ const MyDiaryCreateCard = ({ handleCreateSubmit, text, date }) => {
                 text={text}
                 date={date}
                 isCreate={true}
-                handleSubmit={(e, textArea, date) => handleCreateSubmit(e, textArea, date)}/>
+                handleSubmit={(e, textArea, date) => handleCreateSubmit(e, textArea, date)} />
         </Card>
     )
 }

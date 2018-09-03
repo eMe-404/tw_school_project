@@ -4,34 +4,39 @@ import MyDiaryListItem from './my-diary-list-item'
 import { connect } from 'react-redux'
 import dataSource from './data-source'
 import { Pagination } from 'antd'
-
+import { loadDiaries, addDiaryWithDispatch, deleteDiaryWithDispatch, updateDiaryWithDispatch } from '../actions/diaries'
 
 class MyDiary extends Component {
 
-    handleCreate = (e, text, date) => {
-        e.preventDefault()
-        this.props.addLog({ date, text })
+    componentDidMount() {
+        const { loadDiaries } = this.props
+        loadDiaries()
     }
 
-    handleUpdate = (e, text, date, logId) => {
+    handleCreate = (e, text, momentDate) => {
         e.preventDefault()
-        this.props.updateLog({ text, date, logId })
+        const date = momentDate.format('YYYY-MM-DD')
+        this.props.addDiary({ date, text })
+    }
+
+    handleUpdate = (e, text, date, id) => {
+        e.preventDefault()
+        this.props.updateDiary({ text, date, id })
     }
 
 
     handleDelete = (logId) => {
-        this.props.deleteLog(logId)
+        this.props.deleteDiary(logId)
     }
 
-    render () {
-        const { diaries } = this.props
+    render() {
+        const { diaries, pageable } = this.props
         const myDiaryList = diaries.map((log, index) => (
             <MyDiaryListItem
                 {...log}
-                logId={index}
                 handleUpdate={this.handleUpdate}
                 handleDelete={this.handleDelete}
-                key={index}/>
+                key={index} />
         ))
         return (
             <div>
@@ -43,8 +48,8 @@ class MyDiary extends Component {
                 {myDiaryList}
                 <Pagination
                     showSizeChanger
-                    defaultCurrent={1}
-                    total={myDiaryList.length}
+                    current={1}
+                    total={diaries.length}
                     style={{ margin: 10 }}
                 />
             </div>
@@ -53,27 +58,25 @@ class MyDiary extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    diaries: state.diaries
+    diaries: state.diaries,
+    pageable: state.diaries.pageable
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addLog: (logInfo) => {
-        dispatch({
-            type: 'ADD_LOG',
-            data: logInfo
-        })
+    loadDiaries: () => {
+        dispatch(loadDiaries())
     },
-    deleteLog: (logId) => {
-        dispatch({
-            type: 'DELETE_LOG',
-            data: logId
-        })
+
+    addDiary: (logInfo) => {
+        dispatch(addDiaryWithDispatch(logInfo))
     },
-    updateLog: (logInfo) => {
-        dispatch({
-            type: 'UPDATE_LOG',
-            data: logInfo
-        })
+
+    deleteDiary: (logId) => {
+        dispatch(deleteDiaryWithDispatch(logId))
+    },
+
+    updateDiary: (logInfo) => {
+        dispatch(updateDiaryWithDispatch(logInfo))
     }
 })
 

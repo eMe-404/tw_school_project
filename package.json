@@ -7,12 +7,13 @@
     "moment": "^2.22.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-markdown": "latest",
+    "react-redux": "latest",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "redux": "latest",
-    "react-redux": "latest",
+    "redux": "^4.0.0",
     "redux-thunk": "latest",
-    "react-markdown": "latest"
+    "superagent": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,5 +25,12 @@
     "eslint": "^5.4.0",
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0"
+  },
+  "proxy": {
+    "/": {
+      "target": "http://localhost:8080",
+      "secure": false,
+      "changeOrigin": true
+    }
   }
 }

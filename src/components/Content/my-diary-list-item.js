@@ -6,7 +6,7 @@ import MyDiaryCreateCardForm from './my-diary-create-card-form'
 
 class MyDiaryListItem extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             isEditing: false
@@ -14,8 +14,8 @@ class MyDiaryListItem extends Component {
     }
 
     confirm = () => {
-        const { handleDelete, logId } = this.props
-        handleDelete(logId)
+        const { handleDelete, id } = this.props
+        handleDelete(id)
         message.success('删除成功')
     }
 
@@ -35,20 +35,20 @@ class MyDiaryListItem extends Component {
         })
     }
 
-    handleUpdateSubmit = (e, text, date, logId) => {
-        this.props.handleUpdate(e, text, date, logId)
+    handleUpdateSubmit = (e, text, date, id) => {
+        this.props.handleUpdate(e, text, date, id)
         this.setState({
             isEditing: false
         })
     }
 
-    render () {
-        const { date, text, logId } = this.props
+    render() {
+        const { date, text, id } = this.props
         return (
             <div>
                 <Card
                     className={this.state.isEditing && 'hide'}
-                    title={date.format('YYYY-MM-DD') + '的日志'}
+                    title={date + '的日志'}
                     extra={
                         <Popconfirm
                             title="确定删除吗?"
@@ -56,12 +56,12 @@ class MyDiaryListItem extends Component {
                             onCancel={this.cancel}
                             okText="确定"
                             cancelText="取消">
-                            <Icon type="close"/>
+                            <Icon type="close" />
                         </Popconfirm>
                     }
                     style={{ width: '100%' }}
                 >
-                    <ReactMarkdown source={text} className='mark-down-wrap'/>
+                    <ReactMarkdown source={text} className='mark-down-wrap' />
 
                     <div style={{ float: 'right' }}>
                         <Button
@@ -92,7 +92,7 @@ class MyDiaryListItem extends Component {
                         isCreate={false}
                         text={text}
                         date={date}
-                        logId={logId}
+                        logId={id}
                         handleUpdateCancel={this.handleUpdateCancel}
                         handleSubmit={this.handleUpdateSubmit}
 
