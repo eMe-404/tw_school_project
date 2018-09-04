@@ -6,7 +6,7 @@ const FormItem = Form.Item
 const TextArea = Input.TextArea
 
 class MyDiaryCreateCardForm extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {
             date: this.props.date,
@@ -14,19 +14,21 @@ class MyDiaryCreateCardForm extends Component {
         }
     }
 
-    handleTextAreaChange (event) {
+
+
+    handleTextAreaChange(event) {
         this.setState({
             text: event.target.value
         })
     }
 
-    handleDatePickerChange (date) {
+    handleDatePickerChange(date) {
         this.setState({
             date: date
         })
     }
 
-    handleUpdateCancel () {
+    handleUpdateCancel() {
         this.setState({
             date: this.props.date,
             text: this.props.text
@@ -35,7 +37,7 @@ class MyDiaryCreateCardForm extends Component {
         this.props.handleUpdateCancel()
     }
 
-    render () {
+    render() {
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
@@ -53,8 +55,10 @@ class MyDiaryCreateCardForm extends Component {
             <Form onSubmit={
                 this.props.isCreate ?
                     (e) => handleSubmit(e, this.state.text, this.state.date) :
-                    (e) => handleSubmit(e, this.state.text, this.state.date, this.props.logId)
-            }>
+                    (e) => handleSubmit(e, this.state.text, this.state.date, this.props.id)
+            }
+            key={this.props.id}
+            >
                 <FormItem
                     {...formItemLayout}
                     label="日期"

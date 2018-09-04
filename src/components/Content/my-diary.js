@@ -4,7 +4,7 @@ import MyDiaryListItem from './my-diary-list-item'
 import { connect } from 'react-redux'
 import dataSource from './data-source'
 import { Pagination } from 'antd'
-import { loadDiaries, addDiaryWithDispatch, deleteDiaryWithDispatch, updateDiaryWithDispatch } from '../actions/diaries'
+import { loadDiaries, addDiaryWithDispatch, deleteDiaryWithDispatch, updateDiaryWithDispatch, changePageWithDispathch } from '../actions/diaries'
 
 class MyDiary extends Component {
 
@@ -19,19 +19,28 @@ class MyDiary extends Component {
         this.props.addDiary({ date, text })
     }
 
-    handleUpdate = (e, text, date, id) => {
+    handleUpdate = (e, text, momentDate, id) => {
         e.preventDefault()
+        const date = momentDate.format('YYYY-MM-DD')
         this.props.updateDiary({ text, date, id })
     }
 
 
-    handleDelete = (logId) => {
-        this.props.deleteDiary(logId)
+    handleDelete = (id) => {
+        this.props.deleteDiary(id)
+    }
+
+    handlePagination = (targetPage, pageSize) => {
+        this.props.changePage(targetPage, pageSize)
+    }
+
+    handlePageSizeChange = (currentPage, size) => {
+        this.props.changePage(currentPage, size)
     }
 
     render() {
-        const { diaries, pageable } = this.props
-        const myDiaryList = diaries.map((log, index) => (
+        const { diaries: { content: diaries, totalElements, number: currentPage } } = this.props
+        const myDiaryList = diaries && diaries.map((log, index) => (
             <MyDiaryListItem
                 {...log}
                 handleUpdate={this.handleUpdate}
@@ -48,8 +57,10 @@ class MyDiary extends Component {
                 {myDiaryList}
                 <Pagination
                     showSizeChanger
-                    current={1}
-                    total={diaries.length}
+                    current={currentPage + 1}
+                    total={totalElements}
+                    onChange={(targetPage, pageSize) => { this.handlePagination(targetPage, pageSize) }}
+                    onShowSizeChange={(current, size) => { this.handlePageSizeChange(current, size) }}
                     style={{ margin: 10 }}
                 />
             </div>
@@ -58,8 +69,7 @@ class MyDiary extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    diaries: state.diaries,
-    pageable: state.diaries.pageable
+    diaries: state.diaries
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -71,12 +81,16 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(addDiaryWithDispatch(logInfo))
     },
 
-    deleteDiary: (logId) => {
-        dispatch(deleteDiaryWithDispatch(logId))
+    deleteDiary: (id) => {
+        dispatch(deleteDiaryWithDispatch(id))
     },
 
     updateDiary: (logInfo) => {
         dispatch(updateDiaryWithDispatch(logInfo))
+    },
+
+    changePage: (page, pageSize) => {
+        dispatch(changePageWithDispathch(page, pageSize))
     }
 })
 

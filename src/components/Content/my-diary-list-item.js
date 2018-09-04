@@ -92,7 +92,7 @@ class MyDiaryListItem extends Component {
                         isCreate={false}
                         text={text}
                         date={date}
-                        logId={id}
+                        id={id}
                         handleUpdateCancel={this.handleUpdateCancel}
                         handleSubmit={this.handleUpdateSubmit}
 
